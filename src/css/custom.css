@@ -1,74 +1,74 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
-
 /* ==========================================================================
-   1. CẤU HÌNH HỆ THỐNG BIẾN MÀU (LIGHT MODE)
+   BỔ SUNG CHI TIẾT THEO YÊU CẦU
    ========================================================================== */
-:root {
-  /* Màu chủ đạo: Xanh lục bảo đậm (Deep Teal) theo tone màu ngân hàng mẫu */
-  --ifm-color-primary: #004d40;          
-  --ifm-color-primary-dark: #00453a;     
-  --ifm-color-primary-darker: #004137;   
-  --ifm-color-primary-darkest: #00362d;  
-  --ifm-color-primary-light: #005546;    
-  --ifm-color-primary-lighter: #00594a;  
-  --ifm-color-primary-lightest: #006755; 
-  
-  /* Màu bổ trợ cho các hộp chỉ dẫn (Callout màu vàng cam) */
-  --brand-warning-bg: #fffde7;           
-  --brand-warning-border: #ffd54f;       
-  
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.05);
+
+/* 1. LÀM ĐƯỜNG DẪN (BREADCRUMB) NỔI BẬT LÊN */
+/* Biến thanh breadcrumb mặc định thành dạng hộp Badge/Alert có nền như bản mẫu */
+.theme-doc-breadcrumbs {
+  background-color: #e0f2f1 !important; /* Nền xanh ngọc nhạt nhã nhặn */
+  padding: 10px 15px !important;
+  border-radius: 6px !important;
+  border-left: 4px solid #004d40 !important; /* Thêm vệt màu xanh đậm ở đầu */
+  margin-bottom: 1.5rem !important;
+  display: inline-flex !important; /* Thu gọn vừa bằng chiều dài chữ */
 }
 
-/* ==========================================================================
-   2. CẤU HÌNH HỆ THỐNG BIẾN MÀU (DARK MODE)
-   ========================================================================== */
-[data-theme='dark'] {
-  --ifm-color-primary: #00bfa5;
-  --ifm-color-primary-dark: #00ac95;
-  --ifm-color-primary-darker: #00a28c;
-  --ifm-color-primary-darkest: #008674;
-  --ifm-color-primary-light: #1ae2c6;
-  --ifm-color-primary-lighter: #33e5cc;
-  --ifm-color-primary-lightest: #66ebd9;
-  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
+/* Đổi màu chữ của đường dẫn */
+.breadcrumbs__link {
+  color: #004d40 !important; /* Màu xanh đậm dễ nhìn */
+  font-weight: 600 !important;
 }
 
-/* ==========================================================================
-   3. ÉP KIỂU THANH NAVBAR (HEADER) GIỐNG BẢN MẪU
-   ========================================================================== */
-.navbar {
-  background-color: #00362d !important; /* Đổi nền header thành xanh đậm */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.breadcrumbs__item--active .breadcrumbs__link {
+  color: #00796b !important;
 }
 
-.navbar__title, .navbar__item, .navbar__link {
-  color: #ffffff !important; /* Chuyển toàn bộ chữ trên header thành màu trắng */
+
+/* 2. LÀM SIDEBAR BÊN TRÁI NỔI BẬT HƠN (GIỐNG BẢN MẪU) */
+/* Thêm số thứ tự tự động dạng hình tròn trước mỗi mục Menu cha */
+.theme-doc-sidebar-container {
+  background-color: #f8f9fa !important; /* Đổi nền sidebar sang màu xám cực nhẹ để tách biệt với vùng nội dung */
+  border-right: 1px solid #e0e0e0 !important;
 }
 
-.navbar__link--active {
-  color: #ffd54f !important; /* Tab nào đang được chọn sẽ đổi sang chữ vàng gold */
-  font-weight: bold;
+/* Làm các tiêu đề menu chính to, rõ ràng và có khoảng cách rộng rãi */
+.menu__list-item {
+  margin-top: 8px !important;
+  margin-bottom: 8px !important;
 }
 
-/* ==========================================================================
-   4. TÙY BIẾN SIDEBAR BÊN TRÁI & HỘP NỔI BẬT (CALLOUT)
-   ========================================================================== */
-/* Hiệu ứng khi click chọn một mục menu trên Sidebar */
+.menu__link {
+  font-weight: 500 !important;
+  font-size: 0.95rem !important;
+  color: #37474f !important; /* Màu chữ mặc định đậm hơn */
+}
+
+/* Đổ màu nền nổi bật và bo viền dày hơn cho mục đang được chọn (Active) */
 .menu__list-item-link--active {
-  background-color: #e0f2f1 !important; /* Vùng nền đổi sang xanh nhạt */
-  color: #004d40 !important;             /* Chữ đổi sang xanh đậm */
-  font-weight: bold;
+  background-color: #ffffff !important; /* Đổi sang nền trắng */
+  color: #004d40 !important;
+  border-left: 4px solid #004d40 !important; /* Vệt xanh đậm bên mép trái mục đang chọn */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
 }
 
-/* Custom lại hộp thông báo dán nhãn Tip (Màn hình Demo tương tác...) */
-.theme-admonition-tip {
-  background-color: var(--brand-warning-bg) !important;
-  border-left-color: var(--brand-warning-border) !important;
-  color: #5d4037 !important;
+
+/* 3. THÊM CHỮ "TP TELLER" HOẶC "WEB CSR" VÀO GÓC PHẢI MÀN HÌNH NỘI DUNG */
+/* Tạo một khung Badge nổi định vị ở góc phải của vùng nội dung chính */
+.theme-doc-markdown {
+  position: relative; /* Tạo gốc tọa độ cho chữ nổi phía sau */
+}
+
+.theme-doc-markdown::before {
+  content: "TP Teller"; /* Nội dung chữ hiển thị ở góc phải */
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #fff8e1 !important; /* Nền vàng nhạt nhẹ */
+  color: #f57f17 !important;            /* Chữ màu cam/vàng đậm */
+  padding: 4px 12px !important;
+  font-size: 0.8rem !important;
+  font-weight: bold !important;
+  border-radius: 4px !important;
+  border: 1px solid #ffe082 !important;
+  z-index: 10;
 }
