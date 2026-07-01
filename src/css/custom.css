@@ -1,170 +1,82 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
-
-/* ==========================================================================
-   CHỈNH SỬA 1: OVERRIDE GIAO DIỆN MẶC ĐỊNH (MÀU SẮC, NAVBAR, SIDEBAR, BREADCRUMB)
-   ========================================================================== */
-
-:root {
-  /* Hệ màu xanh lục bảo đậm theo style ngân hàng */
-  --ifm-color-primary: #004d40;          
-  --ifm-color-primary-dark: #00453a;     
-  --ifm-color-primary-darker: #004137;   
-  --ifm-color-primary-darkest: #00362d;  
-  --ifm-color-primary-light: #005546;    
-  --ifm-color-primary-lighter: #00594a;  
-  --ifm-color-primary-lightest: #006755; 
-  
-  /* Màu bổ trợ cho hộp thông báo lưu ý (Callout màu vàng cam) */
-  --brand-warning-bg: #fffde7;           
-  --brand-warning-border: #ffd54f;       
-  
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.05);
+/* Nền background của toàn bộ vùng nội dung Docusaurus (Phía sau Card) */
+.theme-doc-markdown {
+  background-color: #f4f6f8 !important;
+  padding: 24px !important;
+  border-radius: 8px;
 }
 
-[data-theme='dark'] {
-  --ifm-color-primary: #00bfa5;
-  --ifm-color-primary-dark: #00ac95;
-  --ifm-color-primary-darker: #00a28c;
-  --ifm-color-primary-darkest: #008674;
-  --ifm-color-primary-light: #1ae2c6;
-  --ifm-color-primary-lighter: #33e5cc;
-  --ifm-color-primary-lightest: #66ebd9;
-  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
+/* KHUNG TRẮNG CHÍNH ĐÓNG GÓI TOÀN BỘ CHỨC NĂNG (MAIN CARD) */
+.main-simulation-card {
+  background-color: #ffffff !important;
+  border: 1px solid #e0e0e0 !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
 }
 
-/* Ép thanh Header (Navbar) thành màu xanh đậm, chữ trắng */
-.navbar {
-  background-color: #00362d !important; 
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-.navbar__title, .navbar__item, .navbar__link {
-  color: #ffffff !important; 
-}
-.navbar__link--active {
-  color: #ffd54f !important; /* Chữ vàng gold cho tab đang active */
-  font-weight: bold;
-}
-
-/* Làm nổi bật đường dẫn Breadcrumb thành dạng thanh Badge */
-.theme-doc-breadcrumbs {
-  background-color: #e0f2f1 !important; 
-  padding: 10px 15px !important;
-  border-radius: 6px !important;
-  border-left: 4px solid #004d40 !important; 
-  margin-bottom: 1.5rem !important;
-  display: inline-flex !important; 
-}
-.breadcrumbs__link {
-  color: #004d40 !important; 
-  font-weight: 600 !important;
-}
-
-/* Làm nổi bật Sidebar bên trái */
-.theme-doc-sidebar-container {
-  background-color: #f8f9fa !important; /* Đổi nền xám nhẹ tách biệt */
-  border-right: 1px solid #e0e0e0 !important;
-}
-/* Tự động chèn chữ NGHIỆP VỤ CHI TIẾT vào trên cùng Sidebar */
-.theme-doc-sidebar-container::before {
-  content: "NGHIỆP VỤ CHI TIẾT";
-  display: block;
-  font-size: 0.8rem;
-  font-weight: bold;
-  color: #546e7a;
-  padding: 15px 20px 5px 20px;
-  letter-spacing: 0.5px;
-}
-.menu__list-item {
-  margin-top: 6px !important;
-  margin-bottom: 6px !important;
-}
-.menu__link {
-  font-weight: 500 !important;
-  color: #37474f !important; 
-}
-/* Hiệu ứng mục đang chọn trên Sidebar */
-.menu__list-item-link--active {
-  background-color: #ffffff !important; 
-  color: #004d40 !important;
-  border-left: 4px solid #004d40 !important; 
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
-}
-
-/* Custom lại hộp cảnh báo Admonition Tip mặc định */
-.theme-admonition-tip {
-  background-color: var(--brand-warning-bg) !important;
-  border-left-color: var(--brand-warning-border) !important;
-  color: #5d4037 !important;
-}
-
-
-/* ==========================================================================
-   CHỈNH SỬA 2: CÁC CLASS TÙY BIẾN ĐỂ GỌI TRONG FILE .MD/.MDX (DÙNG ĐÓNG KHUNG)
-   ========================================================================== */
-
-/* Khung tiêu đề nhỏ định danh chức năng */
-.function-header {
+/* Header phụ của Card */
+.card-function-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #78909c;
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
 }
-.badge-system {
+.func-index {
+  color: #00796b;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.system-tag {
   background-color: #fff3e0;
   color: #e65100;
-  padding: 2px 8px;
-  border-radius: 4px;
-}
-
-/* Thanh dẫn đường bổ trợ bên trong trang */
-.path-guide {
-  background-color: #f0f4f8;
-  padding: 8px 12px;
-  border-radius: 6px;
-  color: #004d40;
-  margin-bottom: 1rem;
-}
-
-/* ĐÓNG KHUNG RIÊNG BIỆT CHO KHU VỰC MÔ PHỎNG */
-.mockup-container {
-  border: 1px solid #cfd8dc;
-  border-radius: 8px;
-  background-color: #ffffff;
-  padding: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  margin-top: 1.5rem;
-}
-
-/* Thanh tiến trình con dạng số tròn (1) (2) (3) bên trong khung mockup */
-.sub-step-bar {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #eceff1;
-  padding-bottom: 15px;
-}
-.step-dot {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 2px solid #b0bec5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-size: 0.8rem;
   font-weight: bold;
-  color: #78909c;
+  padding: 4px 10px;
+  border-radius: 6px;
 }
-.step-dot.active {
-  background-color: #2e7d32; /* Màu xanh lá cây đậm khi hoàn thành/đang chọn */
-  border-color: #2e7d32;
-  color: white;
+
+/* Tiêu đề chính bên trong Card */
+.card-function-title {
+  font-size: 1.6rem !important;
+  color: #102a43 !important;
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
+}
+
+/* Đường dẫn dạng thanh màu xanh rêu */
+.card-path-badge {
+  background-color: #004d40 !important; /* Màu xanh rêu gốc */
+  color: #ffffff !important;
+  padding: 8px 16px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+.path-icon {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+/* Hộp cảnh báo màu vàng nhạt */
+.card-instruction-tip {
+  background-color: #fffde7 !important;
+  border: 1px solid #ffe082 !important;
+  border-left: 4px solid #ffb300 !important;
+  color: #5d4037 !important;
+  padding: 12px 16px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+/* Khung bọc khu vực mô phỏng Core */
+.actual-screen-mockup {
+  margin-top: 15px;
+  border-radius: 6px;
+  overflow: hidden;
 }
