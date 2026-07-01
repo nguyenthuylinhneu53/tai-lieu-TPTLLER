@@ -4,6 +4,7 @@ import styles from './styles.module.css';
 const STORAGE_KEY = 'hdsd-tptlr-progress';
 const TABS = [
   { key: 'steps', label: 'Thao tác', icon: '📝' },
+  { key: 'fields', label: 'Trường thông tin', icon: '🗒️' },
   { key: 'rules', label: 'Quy tắc hệ thống', icon: '📜' },
   { key: 'errors', label: 'Lỗi thường gặp', icon: '⚠️' },
   { key: 'docs', label: 'Tài liệu', icon: '📄' },
@@ -199,6 +200,22 @@ export default function HdsdInteractive({ sections, appName, appSubName }) {
               ) : (
                 <EmptyTab />
               ))}
+            {activeTab === 'fields' &&
+              (activeSection.mockup?.fields ? (
+                <div className={styles.fieldInfoList}>
+                  {activeSection.mockup.fields.map((f, i) => (
+                    <div className={styles.fieldInfoItem} key={i}>
+                      <div className={styles.fieldInfoName}>
+                        {f.icon && <span className={styles.fieldIcon}>{f.icon}</span>}
+                        {f.label}
+                      </div>
+                      <div className={styles.fieldInfoDesc}>{f.tip}</div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <EmptyTab />
+              ))}
             {activeTab === 'rules' &&
               (activeSection.rules ? (
                 <ul className={styles.plainList}>
@@ -219,8 +236,29 @@ export default function HdsdInteractive({ sections, appName, appSubName }) {
               ) : (
                 <EmptyTab />
               ))}
-            {activeTab === 'docs' && <EmptyTab />}
-            {activeTab === 'video' && <EmptyTab />}
+            {activeTab === 'docs' &&
+              (activeSection.docs ? (
+                <div className={styles.docList}>
+                  {activeSection.docs.map((d, i) => (
+                    <a href={d.url} target="_blank" rel="noreferrer" className={styles.docItem} key={i}>
+                      <span className={styles.docIcon}>📄</span>
+                      <span className={styles.docLabel}>{d.label}</span>
+                      <span className={styles.docArrow}>↗</span>
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                <EmptyTab />
+              ))}
+            {activeTab === 'video' &&
+              (activeSection.video ? (
+                <a href={activeSection.video} target="_blank" rel="noreferrer" className={styles.videoCard}>
+                  <span className={styles.videoPlay}>▶</span>
+                  <span>Xem video hướng dẫn</span>
+                </a>
+              ) : (
+                <EmptyTab />
+              ))}
           </div>
         </main>
       </div>
