@@ -1,74 +1,170 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
 /* ==========================================================================
-   BỔ SUNG CHI TIẾT THEO YÊU CẦU
+   CHỈNH SỬA 1: OVERRIDE GIAO DIỆN MẶC ĐỊNH (MÀU SẮC, NAVBAR, SIDEBAR, BREADCRUMB)
    ========================================================================== */
 
-/* 1. LÀM ĐƯỜNG DẪN (BREADCRUMB) NỔI BẬT LÊN */
-/* Biến thanh breadcrumb mặc định thành dạng hộp Badge/Alert có nền như bản mẫu */
-.theme-doc-breadcrumbs {
-  background-color: #e0f2f1 !important; /* Nền xanh ngọc nhạt nhã nhặn */
-  padding: 10px 15px !important;
-  border-radius: 6px !important;
-  border-left: 4px solid #004d40 !important; /* Thêm vệt màu xanh đậm ở đầu */
-  margin-bottom: 1.5rem !important;
-  display: inline-flex !important; /* Thu gọn vừa bằng chiều dài chữ */
+:root {
+  /* Hệ màu xanh lục bảo đậm theo style ngân hàng */
+  --ifm-color-primary: #004d40;          
+  --ifm-color-primary-dark: #00453a;     
+  --ifm-color-primary-darker: #004137;   
+  --ifm-color-primary-darkest: #00362d;  
+  --ifm-color-primary-light: #005546;    
+  --ifm-color-primary-lighter: #00594a;  
+  --ifm-color-primary-lightest: #006755; 
+  
+  /* Màu bổ trợ cho hộp thông báo lưu ý (Callout màu vàng cam) */
+  --brand-warning-bg: #fffde7;           
+  --brand-warning-border: #ffd54f;       
+  
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.05);
 }
 
-/* Đổi màu chữ của đường dẫn */
+[data-theme='dark'] {
+  --ifm-color-primary: #00bfa5;
+  --ifm-color-primary-dark: #00ac95;
+  --ifm-color-primary-darker: #00a28c;
+  --ifm-color-primary-darkest: #008674;
+  --ifm-color-primary-light: #1ae2c6;
+  --ifm-color-primary-lighter: #33e5cc;
+  --ifm-color-primary-lightest: #66ebd9;
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
+}
+
+/* Ép thanh Header (Navbar) thành màu xanh đậm, chữ trắng */
+.navbar {
+  background-color: #00362d !important; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.navbar__title, .navbar__item, .navbar__link {
+  color: #ffffff !important; 
+}
+.navbar__link--active {
+  color: #ffd54f !important; /* Chữ vàng gold cho tab đang active */
+  font-weight: bold;
+}
+
+/* Làm nổi bật đường dẫn Breadcrumb thành dạng thanh Badge */
+.theme-doc-breadcrumbs {
+  background-color: #e0f2f1 !important; 
+  padding: 10px 15px !important;
+  border-radius: 6px !important;
+  border-left: 4px solid #004d40 !important; 
+  margin-bottom: 1.5rem !important;
+  display: inline-flex !important; 
+}
 .breadcrumbs__link {
-  color: #004d40 !important; /* Màu xanh đậm dễ nhìn */
+  color: #004d40 !important; 
   font-weight: 600 !important;
 }
 
-.breadcrumbs__item--active .breadcrumbs__link {
-  color: #00796b !important;
-}
-
-
-/* 2. LÀM SIDEBAR BÊN TRÁI NỔI BẬT HƠN (GIỐNG BẢN MẪU) */
-/* Thêm số thứ tự tự động dạng hình tròn trước mỗi mục Menu cha */
+/* Làm nổi bật Sidebar bên trái */
 .theme-doc-sidebar-container {
-  background-color: #f8f9fa !important; /* Đổi nền sidebar sang màu xám cực nhẹ để tách biệt với vùng nội dung */
+  background-color: #f8f9fa !important; /* Đổi nền xám nhẹ tách biệt */
   border-right: 1px solid #e0e0e0 !important;
 }
-
-/* Làm các tiêu đề menu chính to, rõ ràng và có khoảng cách rộng rãi */
-.menu__list-item {
-  margin-top: 8px !important;
-  margin-bottom: 8px !important;
+/* Tự động chèn chữ NGHIỆP VỤ CHI TIẾT vào trên cùng Sidebar */
+.theme-doc-sidebar-container::before {
+  content: "NGHIỆP VỤ CHI TIẾT";
+  display: block;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #546e7a;
+  padding: 15px 20px 5px 20px;
+  letter-spacing: 0.5px;
 }
-
+.menu__list-item {
+  margin-top: 6px !important;
+  margin-bottom: 6px !important;
+}
 .menu__link {
   font-weight: 500 !important;
-  font-size: 0.95rem !important;
-  color: #37474f !important; /* Màu chữ mặc định đậm hơn */
+  color: #37474f !important; 
 }
-
-/* Đổ màu nền nổi bật và bo viền dày hơn cho mục đang được chọn (Active) */
+/* Hiệu ứng mục đang chọn trên Sidebar */
 .menu__list-item-link--active {
-  background-color: #ffffff !important; /* Đổi sang nền trắng */
+  background-color: #ffffff !important; 
   color: #004d40 !important;
-  border-left: 4px solid #004d40 !important; /* Vệt xanh đậm bên mép trái mục đang chọn */
+  border-left: 4px solid #004d40 !important; 
   box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
 }
 
-
-/* 3. THÊM CHỮ "TP TELLER" HOẶC "WEB CSR" VÀO GÓC PHẢI MÀN HÌNH NỘI DUNG */
-/* Tạo một khung Badge nổi định vị ở góc phải của vùng nội dung chính */
-.theme-doc-markdown {
-  position: relative; /* Tạo gốc tọa độ cho chữ nổi phía sau */
+/* Custom lại hộp cảnh báo Admonition Tip mặc định */
+.theme-admonition-tip {
+  background-color: var(--brand-warning-bg) !important;
+  border-left-color: var(--brand-warning-border) !important;
+  color: #5d4037 !important;
 }
 
-.theme-doc-markdown::before {
-  content: "TP Teller"; /* Nội dung chữ hiển thị ở góc phải */
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: #fff8e1 !important; /* Nền vàng nhạt nhẹ */
-  color: #f57f17 !important;            /* Chữ màu cam/vàng đậm */
-  padding: 4px 12px !important;
-  font-size: 0.8rem !important;
-  font-weight: bold !important;
-  border-radius: 4px !important;
-  border: 1px solid #ffe082 !important;
-  z-index: 10;
+
+/* ==========================================================================
+   CHỈNH SỬA 2: CÁC CLASS TÙY BIẾN ĐỂ GỌI TRONG FILE .MD/.MDX (DÙNG ĐÓNG KHUNG)
+   ========================================================================== */
+
+/* Khung tiêu đề nhỏ định danh chức năng */
+.function-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #78909c;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.badge-system {
+  background-color: #fff3e0;
+  color: #e65100;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* Thanh dẫn đường bổ trợ bên trong trang */
+.path-guide {
+  background-color: #f0f4f8;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: #004d40;
+  margin-bottom: 1rem;
+}
+
+/* ĐÓNG KHUNG RIÊNG BIỆT CHO KHU VỰC MÔ PHỎNG */
+.mockup-container {
+  border: 1px solid #cfd8dc;
+  border-radius: 8px;
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-top: 1.5rem;
+}
+
+/* Thanh tiến trình con dạng số tròn (1) (2) (3) bên trong khung mockup */
+.sub-step-bar {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eceff1;
+  padding-bottom: 15px;
+}
+.step-dot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid #b0bec5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #78909c;
+}
+.step-dot.active {
+  background-color: #2e7d32; /* Màu xanh lá cây đậm khi hoàn thành/đang chọn */
+  border-color: #2e7d32;
+  color: white;
 }
