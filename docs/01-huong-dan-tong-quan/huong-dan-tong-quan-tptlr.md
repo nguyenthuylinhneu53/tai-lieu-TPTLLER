@@ -1,82 +1,170 @@
----
-sidebar_position: 1
-title: II. HƯỚNG DẪN TỔNG QUAN VỀ CHƯƠNG TRÌNH TPTLR
----
+# HƯỚNG DẪN SỬ DỤNG TPTLR — DẠNG CÁC BƯỚC THAO TÁC
 
-# II. HƯỚNG DẪN TỔNG QUAN VỀ CHƯƠNG TRÌNH TPTLR
-
-Hệ thống TPTLR (TP Teller) yêu cầu người sử dụng nắm vững quy trình đăng nhập bảo mật hệ thống, cấu trúc các menu chức năng cốt lõi và các phím tắt tác nghiệp nhanh dưới đây.
+> Tài liệu được chuyển đổi từ bản HDSD gốc sang định dạng từng bước (step-by-step), phục vụ xây dựng HDSD online.
 
 ---
 
-## 1. Đăng nhập hệ thống & Quản lý quỹ đầu ngày
+## 1. ĐĂNG NHẬP TPTLR
 
-<Tabs>
-  <TabItem value="dang-nhap" label="🔐 1. ĐĂNG NHẬP TPTLR" default>
+### 1.1. Thiết lập xác thực OTP (chỉ thực hiện lần đầu)
+**Bước 1:** Cài đặt ứng dụng Google Authenticator hoặc Microsoft Authenticator trên điện thoại Smartphone.
 
-:::📌 Quy định bảo mật
-Hệ thống áp dụng phương thức xác thực 2 lớp (2FA). NSD cần cài đặt ứng dụng **Google Authenticator** hoặc **Microsoft Authenticator** trên điện thoại thông minh trước khi thực hiện.
-:::
+**Bước 2:** Mở ứng dụng vừa cài, thực hiện thiết lập yếu tố xác thực bằng mã OTP theo hướng dẫn hiển thị trên ứng dụng.
 
-### 🔄 Các bước thực hiện:
+> Từ lần đăng nhập sau, NSD chỉ cần lấy mã OTP từ ứng dụng đã thiết lập.
 
-1. **BƯỚC 1 (Chỉ làm lần đầu):** Mở ứng dụng Authenticator trên điện thoại, quét mã QR được cung cấp trên màn hình hệ thống để cấu hình chuỗi mã OTP.
-2. **BƯỚC 2:** Tại màn hình đăng nhập TPTLR, lựa chọn ngôn ngữ giao diện (**Tiếng Việt** / **Tiếng Anh**).
-3. **BƯỚC 3:** Nhập **Mã cán bộ** và **Mật khẩu** của bạn.
-4. **BƯỚC 4:** Mở ứng dụng Authenticator trên điện thoại, lấy mã OTP gồm 6 chữ số hiện tại, nhập vào ô mã xác thực và nhấn **Đăng nhập**.
+### 1.2. Đăng nhập vào chương trình (các lần sau)
+**Bước 1:** Chọn ngôn ngữ hiển thị — Tiếng Việt hoặc Tiếng Anh.
 
-  </TabItem>
+**Bước 2:** Nhập Mã cán bộ.
 
-  <TabItem value="dang-nhap-quy" label="💰 2. ĐĂNG NHẬP QUỸ TIỀN">
+**Bước 3:** Nhập Mật khẩu.
 
-Để thực hiện giao dịch (tiền mặt và phi tiền mặt), NSD bắt buộc phải hạch toán đăng nhập quỹ tiền.
+**Bước 4:** Mở ứng dụng Google Authenticator/Microsoft Authenticator trên điện thoại, lấy mã OTP hiển thị.
 
-### ⚖️ Quy tắc vận hành quỹ:
-
-* **Bắt buộc:** Luôn phải đăng nhập **Quỹ VND** đầu ngày.
-* **Đặc lệ F5 (Chuyển khoản):** Chỉ cần đăng nhập quỹ VND vẫn giao dịch được các loại ngoại tệ khác. Tuy nhiên, khi **Hủy giao dịch F5**, hệ thống sẽ yêu cầu NSD phải đăng nhập đủ các quỹ ngoại tệ liên quan.
-* **Tự động:** Hệ thống tự động đăng nhập các quỹ tiền mặc định theo nhóm quyền của NSD.
-
-### 🔄 Các bước thêm quỹ thủ công:
-
-1. **BƯỚC 1:** Truy cập vào một trong hai phân hệ chức năng:
-    * *Cách 1:* Phân hệ **Giao dịch ngân quỹ**.
-    * *Cách 2:* Phân hệ **Giao dịch khách hàng**.
-2. **BƯỚC 2:** Nhấp chọn nút **Thêm quỹ tiền** trên thanh công cụ.
-3. **BƯỚC 3:** Click **Lựa chọn quỹ tiền** (chọn loại ngoại tệ cần phát sinh giao dịch) và xác nhận đăng nhập quỹ.
-
-  </TabItem>
-</Tabs>
+**Bước 5:** Nhập mã OTP vào màn hình đăng nhập để hoàn tất.
 
 ---
 
-## 2. Tra cứu Danh mục Chức năng chính (Trang chủ TPTLR)
+## 2. ĐĂNG NHẬP QUỸ TIỀN ĐỂ THỰC HIỆN GIAO DỊCH
 
-Trang chủ TPTLR bao gồm 5 nhóm Menu chính. Tùy thuộc vào phân quyền cụ thể của từng cán bộ tại từng thời kỳ, màn hình sẽ hiển thị các tính năng chi tiết tương ứng.
+### 2.1. Nguyên tắc chung
+- Để thực hiện giao dịch (tiền mặt và phi tiền mặt), NSD **bắt buộc** phải đăng nhập quỹ VND.
+- Hệ thống **tự động đăng nhập** các quỹ tiền mặc định đã được gán theo nhóm quyền của NSD.
+- **Ngoại lệ:** Tại màn hình chức năng **F5 – Chuyển khoản**, NSD chỉ cần đăng nhập quỹ VND vẫn có thể thực hiện giao dịch với các loại tiền tệ khác. Tuy nhiên khi **hủy** giao dịch F5, NSD phải đăng nhập lại các quỹ tiền liên quan.
+
+### 2.2. Các bước thêm quỹ tiền (khi cần đăng nhập thêm loại quỹ)
+**Bước 1:** Xác định màn hình đang thao tác:
+- Nếu ở chức năng **Giao dịch ngân quỹ** → chọn mục thêm quỹ tiền tại màn hình này.
+- Nếu ở chức năng **Giao dịch khách hàng** → chọn mục thêm quỹ tiền tại màn hình này.
+
+**Bước 2:** Chọn **Thêm quỹ tiền**.
+
+**Bước 3:** Từ danh sách hiển thị, **lựa chọn quỹ tiền** cần đăng nhập bổ sung.
+
+**Bước 4:** Xác nhận để hoàn tất đăng nhập quỹ tiền mới.
 
 ---
 
-## 3. Hướng dẫn Tác nghiệp Nhanh (Phím nóng & Phím tắt)
+## 3. DANH MỤC CHỨC NĂNG CHÍNH TRÊN TRANG CHỦ
 
-<Tabs>
-  <TabItem value="phim-tat" label="⌨️ PHÍM NÓNG & PHÍM TẮT CHUNG" default>
+Trang chủ TPTLR gồm 5 Menu chính:
+1. Màn hình / Desktop
+2. Nhóm chức năng / Section
+3. Hỗ trợ / Options
+4. Tiện ích / Utilities
+5. Trợ giúp / Help
 
-Danh mục đầy đủ tất cả các tổ hợp phím tắt xem tại file đính kèm hệ thống: *Phu Luc I. Danh sach to hop cac phim tat tren TP Teller.docx.*
+### 3.1. Menu Màn hình / Desktop
+**Mục đích:** Dùng để (i) Thay đổi vai trò, hoặc (ii) Thoát khỏi TPTLR.
 
-  </TabItem>
+**Bước 1:** Chọn Menu **Màn hình/Desktop**.
 
-  <TabItem value="dieu-huong" label="🔄 THAO TÁC ĐIỀU HƯỚNG Ô NHẬP LIỆU">
+**Bước 2:** Chọn một trong hai thao tác:
+- Thay đổi vai trò, hoặc
+- Thoát khỏi TPTLR.
 
-<div style={{backgroundColor: '#006653', color: '#ffffff', padding: '12px 20px', borderRadius: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontWeight: 'bold', marginBottom: '20px'}}>
-  <span>THAO TÁC CỦA GIAO DỊCH VIÊN KHI NHẬP LIỆU</span>
-  <span style={{backgroundColor: 'rgba(255,255,255,0.2)', padding: '4px 12px', borderRadius: '12px', fontSize: '13px', letterSpacing: '1px'}}>MAKER</span>
-</div>
+### 3.2. Menu Nhóm chức năng / Section
+Tùy theo phân quyền, NSD được đăng nhập vào một hoặc một số chức năng sau:
 
-### 🎯 Quy trình điều chuyển ô thông tin không dùng chuột:
+| Chức năng | Mục đích sử dụng |
+|---|---|
+| Quản trị Chi nhánh / Branch Maint | Xem thông tin quỹ tiền của ĐGD, tra cứu nhật ký giao dịch, phê duyệt giao dịch theo hàng đợi của KSV, quỹ chính ấn chỉ, điều chỉnh quỹ tiền, bàn giao quỹ tiền, báo cáo… |
+| Vấn tin và duy trì séc / Chk Status Maint | Vấn tin, cập nhật trạng thái, in lại séc có trạng thái đã phát hành theo từng tài khoản khách hàng. |
+| Giao dịch Ngân quỹ | Xuất/nhập tiền cùng ĐGD; điều chuyển tiền với NHNN, các TCTD, ĐGD khác; tiếp quỹ/hoàn quỹ ATM; xuất tiền mặt theo lô; Nhật ký giao dịch; Kiểm quỹ; giao dịch ấn chỉ của GDV; SetPM quỹ tiền… |
+| Giao dịch với KH | Tra cứu thông tin khách hàng; Nộp tiền mặt vào tài khoản; Rút tiền mặt từ tài khoản; Tất toán tiền gửi; Giải ngân; Thu nợ; Chuyển khoản trong hệ thống BIDV… |
 
-1. **BƯỚC 1:** Sử dụng phím **Tab** để di chuyển tuần tự từ ô nhập liệu này sang ô nhập liệu khác hoặc di chuyển đến các nút bấm.
-2. **BƯỚC 2 (Đối với ô có danh sách thả xuống - Dropdown list):** Khi phím Tab di chuyển đến ô Dropdown, nhấn phím **F4** trên bàn phím để hệ thống tự động bung danh sách các giá trị lựa chọn. Sử dụng phím **Mũi tên lên** hoặc **Mũi tên xuống** để di chuyển chọn giá trị phù hợp.
-3. **BƯỚC BỔ TRỢ (Dành cho bàn phím có cụm phím số):** NSD có thể sử dụng phím trừ **(-)** hoặc phím cộng **(+)** tại cụm bàn phím số để di chuyển nhanh qua lại giữa các trường thông tin thay thế hoàn toàn cho phím Tab hoặc chuột trong suốt quá trình tác nghiệp hạch toán tại quầy.
+**Bước thao tác chung:**
+**Bước 1:** Chọn Menu **Nhóm chức năng/Section**.
 
-  </TabItem>
-</Tabs>
+**Bước 2:** Chọn chức năng cần sử dụng trong danh sách được phân quyền (Quản trị Chi nhánh / Vấn tin và duy trì séc / Giao dịch Ngân quỹ / Giao dịch với KH).
+
+**Bước 3:** Thực hiện nghiệp vụ tương ứng theo mục đích sử dụng của chức năng đã chọn.
+
+### 3.3. Menu Hỗ trợ / Options
+
+| Chức năng | Mục đích sử dụng |
+|---|---|
+| In số dư tài khoản / Balance Receipt | In số dư tài khoản thanh toán (DDA) và tài khoản tiết kiệm không kỳ hạn (SAV). |
+| Vấn tin sổ tiết kiệm / Passbook Inquiry | Vấn tin số seri ấn chỉ gán với tài khoản SAV và tài khoản CD. |
+| Duy trì sổ tiết kiệm / Passbook Maint | Cập nhật / Phát hành / Phát hành lại sổ gán với tài khoản SAV, tài khoản CD. |
+
+**Bước thao tác chung:**
+**Bước 1:** Chọn Menu **Hỗ trợ/Options**.
+
+**Bước 2:** Chọn chức năng cần dùng (In số dư tài khoản / Vấn tin sổ tiết kiệm / Duy trì sổ tiết kiệm).
+
+**Bước 3:** Thực hiện thao tác tương ứng (in, vấn tin, cập nhật/phát hành/phát hành lại sổ).
+
+### 3.4. Menu Tiện ích / Utilities
+
+| Chức năng | Mục đích sử dụng |
+|---|---|
+| Khóa ứng dụng / Lock Application | Khóa ứng dụng TP Teller. |
+| Máy tính / Calculator | Tính toán với 3 lựa chọn cách nhập: Tiêu chuẩn (Standard); Nhập theo số tiền (Denomination by Amount); Nhập theo số tờ (Denomination by Count). |
+| Máy tính quy đổi ngoại tệ / Exchange Cal | Tính toán số tiền quy đổi giữa các đơn vị tiền tệ; tự động hiển thị tỷ giá mua/bán đã cài đặt. |
+| Trạng thái host / Host Status | Xem trạng thái online/offline của máy trạm NSD và máy chủ. |
+
+**Bước thao tác — Khóa ứng dụng:**
+**Bước 1:** Chọn Menu **Tiện ích/Utilities**.
+
+**Bước 2:** Chọn **Khóa ứng dụng/Lock Application** để khóa TP Teller.
+
+**Bước thao tác — Máy tính:**
+**Bước 1:** Chọn Menu **Tiện ích/Utilities** → **Máy tính/Calculator**.
+
+**Bước 2:** Chọn cách nhập phù hợp:
+- **Tiêu chuẩn/Standard**: nhập và tính toán như máy tính thông thường.
+- **Nhập theo số tiền/Denomination by Amount**: nhập số tiền tương ứng từng mệnh giá tiền mặt theo từng loại tiền tệ, hệ thống tự tính tổng.
+- **Nhập theo số tờ/Denomination by Count**: nhập số tờ theo từng mệnh giá tiền mặt theo từng loại tiền tệ, hệ thống tự tính tổng.
+
+**Bước thao tác — Máy tính quy đổi ngoại tệ:**
+**Bước 1:** Chọn Menu **Tiện ích/Utilities** → **Máy tính quy đổi n.tệ/Exchange Cal**.
+
+**Bước 2:** Xem tỷ giá mua/bán do chương trình tự động hiển thị.
+
+**Bước 3:** Nhập số tiền cần quy đổi.
+
+> **Lưu ý:** Nếu NSD chỉnh sửa tỷ giá vượt biên độ đã được TSC cài đặt, chương trình sẽ hiển thị ngay thông báo lỗi và không cho phép sửa.
+
+**Bước thao tác — Xem trạng thái Host:**
+**Bước 1:** Chọn Menu **Tiện ích/Utilities** → **Trạng thái host/Host Status**.
+
+**Bước 2:** Quan sát trạng thái online/offline của máy trạm và máy chủ.
+
+> Khi máy chủ offline, thanh taskbar phía dưới màn hình TPTLR sẽ hiển thị chữ "offline".
+
+### 3.5. Menu Trợ giúp / Help
+**Bước 1:** Chọn Menu **Trợ giúp/Help**.
+
+**Bước 2:** Xem thông tin phiên bản TPTLR đang sử dụng.
+
+---
+
+## 4. PHÍM NÓNG TRUY CẬP NHANH CHỨC NĂNG
+
+### 4.1. Tổ hợp phím CTRL/ALT + chữ cái
+**Bước 1:** Xác định loại thao tác cần thực hiện:
+- Truy cập nhanh **chức năng chính** → dùng **CTRL + chữ cái**. Ví dụ:
+  - Quản trị Chi nhánh: **Ctrl + B**
+  - Vấn tin và duy trì séc: **Ctrl + K**
+  - Giao dịch Ngân quỹ: **Ctrl + U**
+  - Giao dịch với KH: **Ctrl + T**
+- Truy cập nhanh **nút chức năng** trong màn hình giao dịch → dùng **ALT + chữ cái**.
+
+**Bước 2:** Nhấn tổ hợp phím tương ứng để thực hiện thao tác mong muốn.
+
+> Danh sách đầy đủ các tổ hợp phím tắt: xem **Phụ lục I — Danh sách tổ hợp các phím tắt trên TP Teller.docx**.
+
+### 4.2. Di chuyển bằng phím Tab
+**Bước 1:** Nhấn phím **Tab** để di chuyển giữa các trường thông tin và nút chức năng trên màn hình giao dịch.
+
+**Bước 2:** Khi con trỏ/chuột đến trường có định dạng dropdown list, nhấn **F4** để hiển thị danh sách giá trị.
+
+**Bước 3:** Dùng phím **mũi tên lên/xuống** để di chuyển và chọn giá trị mong muốn.
+
+**Bước 4 (tùy chọn — với bàn phím có cụm phím số):** Dùng phím **–** hoặc **+** ở cụm phím số để di chuyển giữa các trường thông tin và nút chức năng, thay cho việc kết hợp chuột + bàn phím hoặc dùng Tab.
+
+---
+
+*Hết tài liệu.*
