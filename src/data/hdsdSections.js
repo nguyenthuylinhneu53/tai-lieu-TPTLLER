@@ -12,6 +12,8 @@
 //   steps         : mảng bước thao tác — hiện ở tab "Thao tác"
 //   rules         : mảng quy tắc hệ thống — hiện ở tab "Quy tắc hệ thống" (tuỳ chọn)
 //   commonErrors  : mảng lỗi thường gặp — hiện ở tab "Lỗi thường gặp" (tuỳ chọn)
+//   docs          : mảng tài liệu liên quan — hiện ở tab "Tài liệu" [{label, url}] (tuỳ chọn)
+//   video         : link video hướng dẫn — hiện ở tab "Video" (tuỳ chọn)
 //   mockup        : { meta: [chuỗi hiển thị ở thanh trên khung minh hoạ], fields: [{icon, label, tip}] }
 //   step có thể là chuỗi text (tự hiện số) hoặc { icon, text } (hiện icon riêng)
 
@@ -48,6 +50,11 @@ const hdsdSections = [
         { icon: '🔑', label: 'Mã xác thực OTP', tip: 'Mã OTP lấy từ ứng dụng Authenticator. Lỗi thường gặp: nhập mã đã hết hạn (OTP đổi mỗi 30 giây).' },
       ],
     },
+    docs: [
+      { label: 'Hướng dẫn cài đặt Google Authenticator', url: 'https://support.google.com/accounts/answer/1066447' },
+      { label: 'Quy trình xử lý khi khóa tài khoản', url: 'https://nguyenthuylinhneu53.github.io/tai-lieu-TPTLLER/' },
+    ],
+    video: 'https://www.youtube.com/',
   },
   {
     id: 'dang-nhap-quy-tien',
@@ -62,6 +69,18 @@ const hdsdSections = [
       { icon: '💰', text: 'Từ danh sách hiển thị, lựa chọn quỹ tiền cần đăng nhập bổ sung.' },
       { icon: '✅', text: 'Xác nhận để hoàn tất đăng nhập quỹ tiền mới.' },
     ],
+    rules: [
+      'Bắt buộc luôn đăng nhập quỹ VND, kể cả khi chỉ giao dịch ngoại tệ.',
+      'Riêng màn hình F5 – Chuyển khoản, chỉ cần đăng nhập quỹ VND vẫn thực hiện được với các loại tiền tệ khác.',
+      'Khi hủy giao dịch F5-Chuyển khoản, phải đăng nhập lại các quỹ tiền liên quan.',
+    ],
+    commonErrors: [
+      'Quên đăng nhập quỹ tiền tương ứng trước khi giao dịch ngoại tệ.',
+      'Nhầm lẫn giữa màn hình Giao dịch ngân quỹ và Giao dịch khách hàng khi thêm quỹ.',
+    ],
+    docs: [
+      { label: 'Danh mục mã quỹ tiền theo loại tiền tệ', url: 'https://nguyenthuylinhneu53.github.io/tai-lieu-TPTLLER/' },
+    ],
   },
   {
     id: 'danh-muc-chuc-nang',
@@ -74,6 +93,10 @@ const hdsdSections = [
       { icon: '📋', text: 'Chọn Menu "Nhóm chức năng/Section".' },
       { icon: '🗂️', text: 'Chọn chức năng cần sử dụng: Quản trị Chi nhánh, Vấn tin và duy trì séc, Giao dịch Ngân quỹ, hoặc Giao dịch với KH.' },
       { icon: '⚙️', text: 'Thực hiện nghiệp vụ tương ứng theo mục đích sử dụng của chức năng đã chọn.' },
+    ],
+    rules: [
+      'Danh sách chức năng hiển thị phụ thuộc vào nhóm quyền được cấp cho từng NSD.',
+      'Một NSD có thể được phân quyền vào một hoặc nhiều chức năng cùng lúc.',
     ],
   },
   {
@@ -88,6 +111,9 @@ const hdsdSections = [
       { icon: '🔘', text: 'Dùng ALT + chữ cái để truy cập nhanh các nút chức năng trong màn hình giao dịch.' },
       { icon: '↹', text: 'Dùng phím Tab để di chuyển giữa các trường thông tin và nút chức năng.' },
       { icon: '🔽', text: 'Với trường dropdown list, nhấn F4 để hiển thị danh sách, dùng mũi tên lên/xuống để chọn giá trị.' },
+    ],
+    docs: [
+      { label: 'Phụ lục I - Danh sách tổ hợp phím tắt trên TP Teller', url: 'https://nguyenthuylinhneu53.github.io/tai-lieu-TPTLLER/' },
     ],
   },
 ];
