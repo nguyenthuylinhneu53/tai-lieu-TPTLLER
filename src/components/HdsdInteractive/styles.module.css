@@ -1,186 +1,234 @@
-import React from 'react';
+.wrapper {
+  --accent: #2563eb;
+  --accent-soft: #eef2ff;
+  --accent-soft-text: #1e3a8a;
+  --done: #16a34a;
+  --border-soft: #e5e7eb;
+  --border-strong: #d1d5db;
+  --text-muted: #6b7280;
+  --text-body: #374151;
+  --surface: #f9fafb;
+  --surface-card: #ffffff;
 
-export default function TptlrOverview() {
-  return (
-    <div className="main-simulation-card">
-      {/* Header định danh hệ thống */}
-      <div className="card-function-header">
-        <span className="func-index">PHẦN II — TỔNG QUAN HỆ THỐNG</span>
-        <span className="system-tag">TPTLR Core</span>
-      </div>
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  overflow: hidden;
+  margin: 1.75rem 0;
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 14px rgba(0, 0, 0, 0.03);
+  background: var(--surface-card);
+}
 
-      <h1 className="card-function-title">II. HƯỚNG DẪN TỔNG QUAN VỀ CHƯƠNG TRÌNH TPTLR</h1>
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface);
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--border-soft);
+}
 
-      <p className="card-description">
-        Hệ thống tài liệu tổng hợp quy trình vận hành, danh mục phân hệ chức năng chính và cơ chế điều khiển phím tắt nhanh trên chương trình giao dịch TP Teller (TPTLR).
-      </p>
+.brand {
+  font-weight: 600;
+  color: var(--text-body);
+  letter-spacing: -0.01em;
+}
 
-      {/* 1. KHỐI CHỨC NĂNG ĐĂNG NHẬP HỆ THỐNG */}
-      <div className="actual-screen-mockup" style={{ marginBottom: '24px' }}>
-        <div className="sub-step-bar">
-          <div className="step-dot active">1</div>
-          <span style={{ fontWeight: 'bold', color: '#004d40' }}>1. Đăng nhập TPTLR &amp; Xác thực bảo mật</span>
-        </div>
-        
-        <div className="mockup-screen-content">
-          <ul>
-            <li><strong>Đăng nhập lần đầu:</strong> Người sử dụng (NSD) bắt buộc phải cài đặt ứng dụng <code>Google Authenticator</code> hoặc <code>Microsoft Authenticator</code> trên điện thoại thông minh để quét/thiết lập yếu tố xác thực bằng mã OTP theo hướng dẫn.</li>
-            <li><strong>Các lần đăng nhập tiếp theo:</strong> NSD truy cập ứng dụng đã thiết lập để lấy mã OTP tĩnh thời gian thực.</li>
-            <li><strong>Thao tác tại màn hình đăng nhập:</strong> Lựa chọn ngôn ngữ <strong>Tiếng Việt / Tiếng Anh</strong> — Nhập <strong>Mã cán bộ</strong> — Nhập <strong>Mật khẩu</strong> — Nhập <strong>Mã xác thực OTP</strong> để hoàn tất quyền truy cập.</li>
-          </ul>
-        </div>
-      </div>
+.progressWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 150px;
+}
 
-      {/* 2. KHỐI ĐĂNG NHẬP QUỸ TIỀN */}
-      <div className="actual-screen-mockup" style={{ marginBottom: '24px' }}>
-        <div className="sub-step-bar">
-          <div className="step-dot active">2</div>
-          <span style={{ fontWeight: 'bold', color: '#004d40' }}>2. Cơ chế Đăng nhập quỹ tiền giao dịch</span>
-        </div>
-        
-        <div className="mockup-screen-content">
-          <div className="card-instruction-tip" style={{ margin: '0 0 15px 0' }}>
-            ⚠️ <strong>Nguyên tắc cốt lõi:</strong> Để thực hiện giao dịch (tiền mặt và phi tiền mặt), NSD bắt buộc phải đăng nhập các quỹ tiền, trong đó <strong>quỹ VND là bắt buộc mặc định</strong>.
-          </div>
-          <ul>
-            <li><strong>Ngoại lệ chức năng F5 (Chuyển khoản):</strong> NSD chỉ cần đăng nhập quỹ VND vẫn có thể hạch toán các loại ngoại tệ khác. Tuy nhiên, khi thực hiện <strong>Hủy giao dịch F5</strong>, hệ thống yêu cầu NSD phải đăng nhập đầy đủ các quỹ tiền tệ liên quan đến giao dịch đó.</li>
-            <li><strong>Cơ chế tự động:</strong> Hệ thống tự động kích hoạt đăng nhập các quỹ mặc định được gán theo nhóm quyền hạn của NSD.</li>
-            <li><strong>Đường dẫn thêm quỹ tiền thủ công:</strong>
-              <ul>
-                <li><em>Tại phân hệ Giao dịch ngân quỹ:</em> Chọn <code>Thêm quỹ tiền</code> — <code>Lựa chọn quỹ tiền</code></li>
-                <li><em>Tại phân hệ Giao dịch khách hàng:</em> Chọn <code>Thêm quỹ tiền</code> — <code>Lựa chọn quỹ tiền</code></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
+.progressTrack {
+  flex: 1;
+  height: 6px;
+  background: var(--border-soft);
+  border-radius: 3px;
+  overflow: hidden;
+}
 
-      {/* 3. DANH MỤC PHÂN HỆ MENU CHÍNH */}
-      <div className="actual-screen-mockup" style={{ marginBottom: '24px' }}>
-        <div className="sub-step-bar">
-          <div className="step-dot active">3</div>
-          <span style={{ fontWeight: 'bold', color: '#004d40' }}>3. Danh mục chức năng chính trên Trang chủ TPTLR</span>
-        </div>
-        
-        <div className="mockup-screen-content">
-          <p>Trang chủ hệ thống bao gồm 05 trục Menu chính: <code>Màn hình/Desktop</code>; <code>Nhóm chức năng/Section</code>; <code>Hỗ trợ/Options</code>; <code>Tiện ích/Utilities</code>; <code>Trợ giúp/Help</code>.</p>
-          
-          <br />
-          <h3>3.1 Menu Màn hình / Desktop</h3>
-          <p>Hỗ trợ người dùng thao tác nhanh hai tính năng hệ thống: <strong>(i) Thay đổi vai trò làm việc</strong> hoặc <strong>(ii) Thoát khỏi chương trình TPTLR</strong>.</p>
+.progressFill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
 
-          <br />
-          <h3>3.2 Menu Nhóm chức năng / Section (Phân quyền theo chức danh)</h3>
-          <table style={{ width: '100%', borderCollapse: 'collapse', margin: '10px 0' }}>
-            <thead>
-              <tr style={{ backgroundColor: '#004d40', color: 'white' }}>
-                <th style={{ padding: '10px', textAlign: 'left', border: '1px solid #cbd5e1' }}>Chức năng</th>
-                <th style={{ padding: '10px', textAlign: 'left', border: '1px solid #cbd5e1' }}>Mục đích sử dụng chi tiết</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td style={{ padding: '10px', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>Quản trị Chi nhánh (Branch Maint)</td>
-                <td style={{ padding: '10px', border: '1px solid #cbd5e1' }}>Xem thông tin các quỹ tiền của ĐGD, tra cứu nhật ký giao dịch, phê duyệt giao dịch theo hàng đợi của KSV, quản lý quỹ chính ấn chỉ, điều chỉnh/bàn giao quỹ tiền, xuất báo cáo cuối ngày...</td>
-              </tr>
-              <tr>
-                <td style={{ padding: '10px', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>Vấn tin và duy trì séc (Chk Status Maint)</td>
-                <td style={{ padding: '10px', border: '1px solid #cbd5e1' }}>Vấn tin dữ liệu, cập nhật trạng thái hoạt động, in lại séc dựa trên trạng thái đã phát hành chi tiết theo từng tài khoản của khách hàng.</td>
-              </tr>
-              <tr>
-                <td style={{ padding: '10px', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>Giao dịch Ngân quỹ</td>
-                <td style={{ padding: '10px', border: '1px solid #cbd5e1' }}>Thực hiện xuất/nhập tiền nội bộ ĐGD; điều chuyển tiền với NHNN, TCTD và các chi nhánh khác; tiếp quỹ/hoàn quỹ hệ thống ATM; xuất tiền mặt lô lớn, kiểm quỹ, giao dịch ấn chỉ của GDV.</td>
-              </tr>
-              <tr>
-                <td style={{ padding: '10px', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>Giao dịch với KH</td>
-                <td style={{ padding: '10px', border: '1px solid #cbd5e1' }}>Hỗ trợ tra cứu thông tin tập trung của khách hàng và hạch toán giao dịch: Nộp/rút tiền mặt tài khoản, tất toán sổ tiền gửi, giải ngân vốn, thu hồi nợ, chuyển khoản nội bộ BIDV...</td>
-              </tr>
-            </tbody>
-          </table>
+.progressLabel {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
 
-          <br />
-          <h3>3.3 Menu Hỗ trợ / Options</h3>
-          <table style={{ width: '100%', borderCollapse: 'collapse', margin: '10px 0' }}>
-            <thead>
-              <tr style={{ backgroundColor: '#004d40', color: 'white' }}>
-                <th style={{ padding: '10px', textAlign: 'left', border: '1px solid #cbd5e1' }}>Chức năng</th>
-                <th style={{ padding: '10px', textAlign: 'left', border: '1px solid #cbd5e1' }}>Mục đích sử dụng</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td style={{ padding: '10px', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>In số dư tài khoản (Balance Receipt)</td>
-                <td style={{ padding: '10px', border: '1px solid #cbd5e1' }}>In nhanh chứng nhận số dư khả dụng của tài khoản thanh toán (DDA) và tài khoản tiết kiệm không kỳ hạn (SAV).</td>
-              </tr>
-              <tr>
-                <td style={{ padding: '10px', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>Vấn tin sổ tiết kiệm (Passbook Inquiry)</td>
-                <td style={{ padding: '10px', border: '1px solid #cbd5e1' }}>Tra cứu thông tin dãy số seri ấn chỉ vật lý được gán định danh with tài khoản tiết kiệm không kỳ hạn (SAV) và tài khoản tiền gửi có kỳ hạn (CD).</td>
-              </tr>
-              <tr>
-                <td style={{ padding: '10px', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>Duy trì sổ tiết kiệm (Passbook Maint)</td>
-                <td style={{ padding: '10px', border: '1px solid #cbd5e1' }}>Thực hiện các tác nghiệp: Cập nhật thông tin, phát hành mới hoặc phát hành lại phôi sổ gán với tài khoản SAV và tài khoản CD.</td>
-              </tr>
-            </tbody>
-          </table>
+.body {
+  display: flex;
+  min-height: 380px;
+}
 
-          <br />
-          <h3>3.4 Menu Tiện ích / Utilities</h3>
-          <ul>
-            <li><strong>Khóa ứng dụng (Lock Application):</strong> Khóa nhanh màn hình làm việc của TP Teller tạm thời để bảo mật dữ liệu khi GDV rời vị trí.</li>
-            <li><strong>Máy tính (Calculator):</strong> Tích hợp 03 cấu hình nhập liệu chuyên dụng:
-              <ul>
-                <li><em>Tiêu chuẩn (Standard):</em> Tính toán số học cơ bản.</li>
-                <li><em>Nhập theo số tiền (Denomination by Amount):</em> Nhập tổng số tiền tương ứng với từng mệnh giá khai báo để tự động tính tổng bảng kê tiền mặt.</li>
-                <li><em>Nhập theo số tờ (Denomination by Count):</em> Kiểm đếm bằng cách nhập tổng số tờ theo từng mệnh giá để hệ thống nhân quy đổi ra tổng giá trị trị bảng kê.</li>
-              </ul>
-            </li>
-            <li><strong>Máy tính quy đổi ngoại tệ (Exchange Cal):</strong> Hỗ trợ quy đổi dòng tiền giữa các loại tiền tệ dựa trên tỷ giá mua/bán realtime từ hệ thống.
-              <br />⚠️ <em>Lưu ý nghiệp vụ:</em> Nếu NSD chỉnh sửa tỷ giá vượt quá biên độ cho phép được cấu hình từ TSC, chương trình sẽ báo lỗi block giao dịch ngay lập tức.
-            </li>
-            <li><strong>Trạng thái host (Host Status):</strong> Kiểm tra trạng thái kết nối Online/Offline của máy trạm kết nối với Máy chủ Trung ương. Khi trạng thái Host bị mất kết nối (Offline), dòng chữ cảnh báo <code>offline</code> màu đỏ sẽ hiển thị cố định trên thanh Taskbar phía dưới màn hình.</li>
-          </ul>
+.sidebar {
+  width: 230px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border-soft);
+  background: var(--surface);
+  padding: 10px;
+}
 
-          <br />
-          <h3>3.5 Menu Trợ giúp / Help</h3>
-          <p>Hiển thị chi tiết thông tin mã số phiên bản (Version Release) hiện tại của chương trình TPTLR đang vận hành.</p>
-        </div>
-      </div>
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text-body);
+  font-size: 13.5px;
+  transition: background 0.12s ease;
+  margin-bottom: 2px;
+}
 
-      {/* 4. KHỐI TỔ HỢP PHÍM TẮT TRUY CẬP NHANH */}
-      <div className="actual-screen-mockup">
-        <div className="sub-step-bar">
-          <div className="step-dot active">4</div>
-          <span style={{ fontWeight: 'bold', color: '#004d40' }}>4. Hệ thống phím tắt điều hướng nhanh (Hotkeys)</span>
-        </div>
-        
-        <div className="mockup-screen-content">
-          <div className="card-path-badge" style={{ marginBottom: '15px' }}>
-            <span className="path-icon">⌨️ Phím tắt Hệ thống</span> 
-            <strong>Tổ hợp điều hướng giao dịch nhanh thay thế chuột</strong>
-          </div>
+.navItem:hover {
+  background: var(--border-soft);
+}
 
-          <h3>4.1 Sử dụng tổ hợp phím tắt "CTRL / ALT + Chữ cái"</h3>
-          <ul>
-            <li><strong>CTRL + Chữ cái:</strong> Áp dụng để kích hoạt mở nhanh các phân hệ chính từ trang chủ:
-              <ul>
-                <li><code>Ctrl + B</code>: Mở nhanh mục Quản trị Chi nhánh (Branch Maint).</li>
-                <li><code>Ctrl + K</code>: Mở nhanh phân hệ Vấn tin và duy trì séc.</li>
-                <li><code>Ctrl + U</code>: Mở nhanh phân hệ Giao dịch Ngân quỹ.</li>
-                <li><code>Ctrl + T</code>: Mở nhanh phân hệ Giao dịch với Khách hàng.</li>
-              </ul>
-            </li>
-            <li><strong>ALT + Chữ cái:</strong> Áp dụng để thực thi lệnh nhanh cho các nút chức năng (Button) nằm bên trong nội dung màn hình giao dịch cụ thể.</li>
-          </ul>
+.navItemActive {
+  background: var(--accent-soft);
+  color: var(--accent-soft-text);
+  font-weight: 600;
+}
 
-          <br />
-          <h3>4.2 Quy tắc di chuyển vùng nhập liệu bằng bàn phím</h3>
-          <ul>
-            <li>Sử dụng phím <code>Tab</code> hoặc lệnh <code>Shift + Tab</code> để di chuyển tuần tự giữa các trường thông tin dữ liệu (Input fields) và các nút lệnh trên form.</li>
-            <li><strong>Thao tác với danh sách lựa chọn (Dropdown List):</strong> Khi con trỏ chuột di chuyển đến trường Dropdown, nhấn phím <code>F4</code> trên bàn phím để hệ thống tự động bung danh sách (Sổ xuống). Sau đó sử dụng cụm phím <code>Mũi tên lên</code> / <code>Mũi tên xuống</code> để di chuyển chọn giá trị cần hạch toán.</li>
-            <li><strong>Đối với bàn phím có cụm phím số độc lập (Numpad):</strong> NSD có thể sử dụng phím dấu trừ <code>-</code> hoặc phím dấu cộng <code>+</code> tại cụm Numpad để nhảy nhanh giữa các ô nhập liệu thay thế cho phím Tab, tối ưu hóa tốc độ nhập liệu của Giao dịch viên.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  );
+.navItemActive:hover {
+  background: var(--accent-soft);
+}
+
+.navBadge {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1.5px solid var(--border-strong);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.navItemActive .navBadge {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.navBadgeDone {
+  background: var(--done) !important;
+  border-color: var(--done) !important;
+  color: #fff !important;
+}
+
+.content {
+  flex: 1;
+  padding: 22px 28px;
+  overflow: auto;
+}
+
+.eyebrow {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.heading {
+  margin: 0 0 12px !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: var(--text-body);
+}
+
+.breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  background: var(--accent-soft);
+  color: var(--accent-soft-text);
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+.stepsList {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--text-body);
+  padding-left: 20px;
+  margin-bottom: 22px;
+}
+
+.stepsList li::marker {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.mockup {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  padding: 18px;
+  position: relative;
+}
+
+.mockupLabel {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.mockupFields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 300px;
+}
+
+.hotspot {
+  cursor: help;
+}
+
+.fieldLabel {
+  font-size: 12.5px;
+  color: var(--text-body);
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.fieldBox {
+  height: 34px;
+  border: 1px solid var(--border-strong);
+  border-radius: 7px;
+  background: var(--surface-card);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.hotspot:hover .fieldBox {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.tooltip {
+  position: absolute;
+  background: #1f2937;
+  color: #f9fafb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  max-width: 260px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  z-index: 10;
 }
