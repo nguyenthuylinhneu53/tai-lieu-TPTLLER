@@ -3,45 +3,45 @@ sidebar_position: 1
 title: Hướng dẫn tổng quan TPTLR
 ---
 
-<div class="main-simulation-card">
+<div className="main-simulation-card">
 
   {/* Header định danh hệ thống */}
-  <div class="card-function-header">
-    <span class="func-index">PHẦN II — TỔNG QUAN HỆ THỐNG</span>
-    <span class="system-tag">TPTLR Core</span>
+  <div className="card-function-header">
+    <span className="func-index">PHẦN II — TỔNG QUAN HỆ THỐNG</span>
+    <span className="system-tag">TPTLR Core</span>
   </div>
 
-  <h1 class="card-function-title">II. HƯỚNG DẪN TỔNG QUAN VỀ CHƯƠNG TRÌNH TPTLR</h1>
+  <h1 className="card-function-title">II. HƯỚNG DẪN TỔNG QUAN VỀ CHƯƠNG TRÌNH TPTLR</h1>
 
-  <p class="card-description">
+  <p className="card-description">
     Hệ thống tài liệu tổng hợp quy trình vận hành, danh mục phân hệ chức năng chính và cơ chế điều khiển phím tắt nhanh trên chương trình giao dịch TP Teller (TPTLR).
   </p>
 
   {/* 1. KHỐI CHỨC NĂNG ĐĂNG NHẬP HỆ THỐNG */}
-  <div class="actual-screen-mockup" style={{ marginBottom: '24px' }}>
-    <div class="sub-step-bar">
-      <div class="step-dot active">1</div>
-      <span style={{ fontWeight: 'bold', color: '#004d40' }}>1. Đăng nhập TPTLR & Xác thực bảo mật</span>
+  <div className="actual-screen-mockup" style={{ marginBottom: '24px' }}>
+    <div className="sub-step-bar">
+      <div className="step-dot active">1</div>
+      <span style={{ fontWeight: 'bold', color: '#004d40' }}>1. Đăng nhập TPTLR &amp; Xác thực bảo mật</span>
     </div>
     
-    <div class="mockup-screen-content">
+    <div className="mockup-screen-content">
       <ul>
         <li><strong>Đăng nhập lần đầu:</strong> Người sử dụng (NSD) bắt buộc phải cài đặt ứng dụng <code>Google Authenticator</code> hoặc <code>Microsoft Authenticator</code> trên điện thoại thông minh để quét/thiết lập yếu tố xác thực bằng mã OTP theo hướng dẫn.</li>
         <li><strong>Các lần đăng nhập tiếp theo:</strong> NSD truy cập ứng dụng đã thiết lập để lấy mã OTP tĩnh thời gian thực.</li>
-        <li><strong>Thao tác tại màn hình đăng nhập:</strong> Lựa chọn ngôn ngữ <strong>Tiếng Việt / Tiếng Anh</strong> → Nhập <strong>Mã cán bộ</strong> → Nhập <strong>Mật khẩu</strong> → Nhập <strong>Mã xác thực OTP</strong> để hoàn tất quyền truy cập.</li>
+        <li><strong>Thao tác tại màn hình đăng nhập:</strong> Lựa chọn ngôn ngữ <strong>Tiếng Việt / Tiếng Anh</strong> — Nhập <strong>Mã cán bộ</strong> — Nhập <strong>Mật khẩu</strong> — Nhập <strong>Mã xác thực OTP</strong> để hoàn tất quyền truy cập.</li>
       </ul>
     </div>
   </div>
 
   {/* 2. KHỐI ĐĂNG NHẬP QUỸ TIỀN */}
-  <div class="actual-screen-mockup" style={{ marginBottom: '24px' }}>
+  <div className="actual-screen-mockup" style={{ marginBottom: '24px' }}>
     <div class="sub-step-bar">
-      <div class="step-dot active">2</div>
+      <div className="step-dot active">2</div>
       <span style={{ fontWeight: 'bold', color: '#004d40' }}>2. Cơ chế Đăng nhập quỹ tiền giao dịch</span>
     </div>
     
-    <div class="mockup-screen-content">
-      <div class="card-instruction-tip" style={{ margin: '0 0 15px 0' }}>
+    <div className="mockup-screen-content">
+      <div className="card-instruction-tip" style={{ margin: '0 0 15px 0' }}>
         ⚠️ <strong>Nguyên tắc cốt lõi:</strong> Để thực hiện giao dịch (tiền mặt và phi tiền mặt), NSD bắt buộc phải đăng nhập các quỹ tiền, trong đó <strong>quỹ VND là bắt buộc mặc định</strong>.
       </div>
       <ul>
@@ -49,8 +49,8 @@ title: Hướng dẫn tổng quan TPTLR
         <li><strong>Cơ chế tự động:</strong> Hệ thống tự động kích hoạt đăng nhập các quỹ mặc định được gán theo nhóm quyền hạn của NSD.</li>
         <li><strong>Đường dẫn thêm quỹ tiền thủ công:</strong>
           <ul>
-            <li><em>Tại phân hệ Giao dịch ngân quỹ:</em> Chọn <code>Thêm quỹ tiền</code> → <code>Lựa chọn quỹ tiền</code></li>
-            <li><em>Tại phân hệ Giao dịch khách hàng:</em> Chọn <code>Thêm quỹ tiền</code> → <code>Lựa chọn quỹ tiền</code></li>
+            <li><em>Tại phân hệ Giao dịch ngân quỹ:</em> Chọn <code>Thêm quỹ tiền</code> — <code>Lựa chọn quỹ tiền</code></li>
+            <li><em>Tại phân hệ Giao dịch khách hàng:</em> Chọn <code>Thêm quỹ tiền</code> — <code>Lựa chọn quỹ tiền</code></li>
           </ul>
         </li>
       </ul>
@@ -58,13 +58,13 @@ title: Hướng dẫn tổng quan TPTLR
   </div>
 
   {/* 3. DANH MỤC PHÂN HỆ MENU CHÍNH */}
-  <div class="actual-screen-mockup" style={{ marginBottom: '24px' }}>
-    <div class="sub-step-bar">
-      <div class="step-dot active">3</div>
+  <div className="actual-screen-mockup" style={{ marginBottom: '24px' }}>
+    <div className="sub-step-bar">
+      <div className="step-dot active">3</div>
       <span style={{ fontWeight: 'bold', color: '#004d40' }}>3. Danh mục chức năng chính trên Trang chủ TPTLR</span>
     </div>
     
-    <div class="mockup-screen-content">
+    <div className="mockup-screen-content">
       <p>Trang chủ hệ thống bao gồm 05 trục Menu chính: <code>Màn hình/Desktop</code>; <code>Nhóm chức năng/Section</code>; <code>Hỗ trợ/Options</code>; <code>Tiện ích/Utilities</code>; <code>Trợ giúp/Help</code>.</p>
       
       <br />
@@ -120,7 +120,7 @@ title: Hướng dẫn tổng quan TPTLR
           </tr>
           <tr>
             <td style={{ padding: '10px', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>Duy trì sổ tiết kiệm (Passbook Maint)</td>
-            <td style={{ padding: '10px', border: '1px solid #cbd5e1' }}>Thực hiện các tác nghiệp: Cập nhật thông tin, phát hành mới hoặc phát hành lại phôi sổ gán với tài khoản SAV và tài khoản CD.</td>
+            <td style={{ padding: '10px', border: '1px solid #cbd5e1' }}>Thực hiện các tác nghiệp: Cập nhật thông tin, phát hành mới hoặc phát hành lại phôi sổ gán with tài khoản SAV và tài khoản CD.</td>
           </tr>
         </tbody>
       </table>
