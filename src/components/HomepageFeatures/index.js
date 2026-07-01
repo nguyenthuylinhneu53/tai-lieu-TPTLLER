@@ -1,64 +1,146 @@
-import clsx from 'clsx';
-import Heading from '@theme/Heading';
+import React, { useState, useEffect } from 'react';
 import styles from './styles.module.css';
 
-const FeatureList = [
-  {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
-    description: (
-      <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
-      </>
-    ),
-  },
-  {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
-    description: (
-      <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
-      </>
-    ),
-  },
-  {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-    description: (
-      <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
-      </>
-    ),
-  },
-];
+// Component hiển thị HDSD dạng tương tác: sidebar nghiệp vụ + thanh tiến trình + hotspot.
+// Toàn bộ nội dung được truyền vào qua prop `sections`, không hard-code trong component.
+// Xem cấu trúc dữ liệu mẫu tại: src/data/hdsdSections.js
 
-function Feature({Svg, title, description}) {
-  return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
-      </div>
-    </div>
+const STORAGE_KEY = 'hdsd-tptlr-progress';
+
+export default function HdsdInteractive({ sections }) {
+  const [activeId, setActiveId] = useState(sections[0]?.id);
+  const [visited, setVisited] = useState({});
+  const [tooltip, setTooltip] = useState(null); // { text, top, left }
+
+  // Đọc tiến trình đã lưu (localStorage) khi component load lần đầu
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem(STORAGE_KEY);
+      if (saved) setVisited(JSON.parse(saved));
+    } catch (e) {
+      // localStorage có thể không khả dụng (ví dụ chế độ ẩn danh) — bỏ qua an toàn
+    }
+  }, []);
+
+  // Đánh dấu mục đang xem là "đã đọc" + lưu lại tiến trình
+  useEffect(() => {
+    if (!activeId) return;
+    setVisited((prev) => {
+      if (prev[activeId]) return prev;
+      const next = { ...prev, [activeId]: true };
+      try {
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      } catch (e) {}
+      return next;
+    });
+  }, [activeId]);
+
+  const activeSection = sections.find((s) => s.id === activeId) || sections[0];
+  const percent = Math.round(
+    (Object.keys(visited).length / sections.length) * 100
   );
-}
 
-export default function HomepageFeatures() {
+  function handleHotspotEnter(e, tip) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const parentRect = e.currentTarget
+      .closest(`.${styles.mockup}`)
+      .getBoundingClientRect();
+    setTooltip({
+      text: tip,
+      top: rect.top - parentRect.top,
+      left: rect.right - parentRect.left + 12,
+    });
+  }
+
   return (
-    <section className={styles.features}>
-      <div className="container">
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
+    <div className={styles.wrapper}>
+      <div className={styles.topbar}>
+        <div className={styles.brand}>HDSD TPTLR</div>
+        <div className={styles.progressWrap}>
+          <div className={styles.progressTrack}>
+            <div
+              className={styles.progressFill}
+              style={{ width: `${percent}%` }}
+            />
+          </div>
+          <span className={styles.progressLabel}>{percent}%</span>
         </div>
       </div>
-    </section>
+
+      <div className={styles.body}>
+        <nav className={styles.sidebar}>
+          {sections.map((s, idx) => (
+            <div
+              key={s.id}
+              className={`${styles.navItem} ${
+                s.id === activeId ? styles.navItemActive : ''
+              }`}
+              onClick={() => setActiveId(s.id)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && setActiveId(s.id)}
+            >
+              <span
+                className={`${styles.navBadge} ${
+                  visited[s.id] ? styles.navBadgeDone : ''
+                }`}
+              >
+                {visited[s.id] ? '✓' : idx + 1}
+              </span>
+              {s.title}
+            </div>
+          ))}
+        </nav>
+
+        <main className={styles.content}>
+          <div className={styles.eyebrow}>
+            CHỨC NĂNG {sections.findIndex((s) => s.id === activeId) + 1} /{' '}
+            {sections.length}
+          </div>
+          <h3 className={styles.heading}>{activeSection.title}</h3>
+
+          {activeSection.breadcrumb && (
+            <div className={styles.breadcrumb}>{activeSection.breadcrumb}</div>
+          )}
+
+          {activeSection.steps && (
+            <ol className={styles.stepsList}>
+              {activeSection.steps.map((step, i) => (
+                <li key={i}>{step}</li>
+              ))}
+            </ol>
+          )}
+
+          {activeSection.mockup && (
+            <div className={styles.mockup}>
+              <div className={styles.mockupLabel}>
+                Màn hình minh họa (di chuột vào từng trường để xem chi tiết)
+              </div>
+              <div className={styles.mockupFields}>
+                {activeSection.mockup.map((field, i) => (
+                  <div
+                    key={i}
+                    className={styles.hotspot}
+                    onMouseEnter={(e) => handleHotspotEnter(e, field.tip)}
+                    onMouseLeave={() => setTooltip(null)}
+                  >
+                    <div className={styles.fieldLabel}>{field.label}</div>
+                    <div className={styles.fieldBox} />
+                  </div>
+                ))}
+              </div>
+              {tooltip && (
+                <div
+                  className={styles.tooltip}
+                  style={{ top: tooltip.top, left: tooltip.left }}
+                >
+                  {tooltip.text}
+                </div>
+              )}
+            </div>
+          )}
+        </main>
+      </div>
+    </div>
   );
 }
