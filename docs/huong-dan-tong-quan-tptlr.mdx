@@ -1,62 +1,187 @@
 ---
 sidebar_position: 1
 title: Hướng dẫn tổng quan TPTLR
-sidebar_label: <div class="sidebar-item-custom"><span class="sidebar-num">2</span><div class="sidebar-text"><span>Tạo tài khoản Commitment</span><small>WebCSR</small></div></div>
 ---
 
 <div class="main-simulation-card">
 
-  {/* 1. Phần tiêu đề nhỏ góc phải/trái phía trên Card */}
+  {/* Header định danh hệ thống */}
   <div class="card-function-header">
-    <span class="func-index">CHỨC NĂNG 2 / 26</span>
-    <span class="system-tag">WebCSR</span>
+    <span class="func-index">PHẦN II — TỔNG QUAN HỆ THỐNG</span>
+    <span class="system-tag">TPTLR Core</span>
   </div>
 
-  <h1 class="card-function-title">Tạo tài khoản Commitment</h1>
+  <h1 class="card-function-title">II. HƯỚNG DẪN TỔNG QUAN VỀ CHƯƠNG TRÌNH TPTLR</h1>
 
   <p class="card-description">
-    Tài khoản quản lý hợp đồng. Mã sản phẩm nhóm 99xy. Bắt buộc nhập lãi suất = 0.
+    Hệ thống tài liệu tổng hợp quy trình vận hành, danh mục phân hệ chức năng chính và cơ chế điều khiển phím tắt nhanh trên chương trình giao dịch TP Teller (TPTLR).
   </p>
 
-  {/* 2. Thanh đường dẫn màu xanh rêu đặc trưng */}
-  <div class="card-path-badge">
-    <span class="path-icon">🪧 Đường dẫn</span> 
-    <strong>WebCSR — Dịch vụ Cơ bản — Tạo tài khoản</strong>
-  </div>
-
-  {/* 3. Hộp lưu ý tương tác màu vàng */}
-  <div class="card-instruction-tip">
-    💡 <strong>Màn hình Demo tương tác:</strong> Di chuyển chuột vào từng trường để xem <strong>mô tả ý nghĩa</strong> và <strong>lỗi thường gặp</strong>.
-  </div>
-
-  {/* 4. KHU VỰC CHỨC NĂNG MÔ PHỎNG (ĐÓNG KHUNG RIÊNG BIỆT) */}
-  <div class="actual-screen-mockup">
-    
-    {/* Thanh tiến trình con dạng số tròn (1) (2) (3)... bên trong màn hình */}
+  {/* 1. KHỐI CHỨC NĂNG ĐĂNG NHẬP HỆ THỐNG */}
+  <div class="actual-screen-mockup" style={{ marginBottom: '24px' }}>
     <div class="sub-step-bar">
       <div class="step-dot active">1</div>
-      <div class="step-dot">2</div>
-      <div class="step-dot">3</div>
-      <div class="step-dot">4</div>
-      <div class="step-dot">5</div>
-      <div class="step-dot">6</div>
-      <div class="step-dot">7</div>
+      <span style={{ fontWeight: 'bold', color: '#004d40' }}>1. Đăng nhập TPTLR & Xác thực bảo mật</span>
     </div>
-
-    {/* Phần nội dung giao diện thực tế (Form, bảng, ô nhập liệu...) */}
+    
     <div class="mockup-screen-content">
-      <div style={{ padding: '20px', background: '#ffffff', border: '1px solid #cfd8dc' }}>
-        <p><strong>Mã chi nhánh:</strong> 120000 - CN SO GIAO DỊCH 1</p>
-        <hr style={{ margin: '15px 0', border: '0', borderTop: '1px solid #eceff1' }} />
-        <p><strong>Chọn loại tài khoản để tạo:</strong></p>
-        <ul>
-          <li>🔹 9031 - BAN NO DTT CHO VAMC VAMC DH EUR</li>
-          <li>🔹 9032 - CV NH USD</li>
-          <li>🔹 9033 - CV BAT BUOC BAO LANH VND</li>
-        </ul>
-      </div>
+      <ul>
+        <li><strong>Đăng nhập lần đầu:</strong> Người sử dụng (NSD) bắt buộc phải cài đặt ứng dụng <code>Google Authenticator</code> hoặc <code>Microsoft Authenticator</code> trên điện thoại thông minh để quét/thiết lập yếu tố xác thực bằng mã OTP theo hướng dẫn.</li>
+        <li><strong>Các lần đăng nhập tiếp theo:</strong> NSD truy cập ứng dụng đã thiết lập để lấy mã OTP tĩnh thời gian thực.</li>
+        <li><strong>Thao tác tại màn hình đăng nhập:</strong> Lựa chọn ngôn ngữ <strong>Tiếng Việt / Tiếng Anh</strong> → Nhập <strong>Mã cán bộ</strong> → Nhập <strong>Mật khẩu</strong> → Nhập <strong>Mã xác thực OTP</strong> để hoàn tất quyền truy cập.</li>
+      </ul>
     </div>
+  </div>
 
+  {/* 2. KHỐI ĐĂNG NHẬP QUỸ TIỀN */}
+  <div class="actual-screen-mockup" style={{ marginBottom: '24px' }}>
+    <div class="sub-step-bar">
+      <div class="step-dot active">2</div>
+      <span style={{ fontWeight: 'bold', color: '#004d40' }}>2. Cơ chế Đăng nhập quỹ tiền giao dịch</span>
+    </div>
+    
+    <div class="mockup-screen-content">
+      <div class="card-instruction-tip" style={{ margin: '0 0 15px 0' }}>
+        ⚠️ <strong>Nguyên tắc cốt lõi:</strong> Để thực hiện giao dịch (tiền mặt và phi tiền mặt), NSD bắt buộc phải đăng nhập các quỹ tiền, trong đó <strong>quỹ VND là bắt buộc mặc định</strong>.
+      </div>
+      <ul>
+        <li><strong>Ngoại lệ chức năng F5 (Chuyển khoản):</strong> NSD chỉ cần đăng nhập quỹ VND vẫn có thể hạch toán các loại ngoại tệ khác. Tuy nhiên, khi thực hiện <strong>Hủy giao dịch F5</strong>, hệ thống yêu cầu NSD phải đăng nhập đầy đủ các quỹ tiền tệ liên quan đến giao dịch đó.</li>
+        <li><strong>Cơ chế tự động:</strong> Hệ thống tự động kích hoạt đăng nhập các quỹ mặc định được gán theo nhóm quyền hạn của NSD.</li>
+        <li><strong>Đường dẫn thêm quỹ tiền thủ công:</strong>
+          <ul>
+            <li><em>Tại phân hệ Giao dịch ngân quỹ:</em> Chọn <code>Thêm quỹ tiền</code> → <code>Lựa chọn quỹ tiền</code></li>
+            <li><em>Tại phân hệ Giao dịch khách hàng:</em> Chọn <code>Thêm quỹ tiền</code> → <code>Lựa chọn quỹ tiền</code></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  {/* 3. DANH MỤC PHÂN HỆ MENU CHÍNH */}
+  <div class="actual-screen-mockup" style={{ marginBottom: '24px' }}>
+    <div class="sub-step-bar">
+      <div class="step-dot active">3</div>
+      <span style={{ fontWeight: 'bold', color: '#004d40' }}>3. Danh mục chức năng chính trên Trang chủ TPTLR</span>
+    </div>
+    
+    <div class="mockup-screen-content">
+      <p>Trang chủ hệ thống bao gồm 05 trục Menu chính: <code>Màn hình/Desktop</code>; <code>Nhóm chức năng/Section</code>; <code>Hỗ trợ/Options</code>; <code>Tiện ích/Utilities</code>; <code>Trợ giúp/Help</code>.</p>
+      
+      <br />
+      <h3>3.1 Menu Màn hình / Desktop</h3>
+      <p>Hỗ trợ người dùng thao tác nhanh hai tính năng hệ thống: <strong>(i) Thay đổi vai trò làm việc</strong> hoặc <strong>(ii) Thoát khỏi chương trình TPTLR</strong>.</p>
+
+      <br />
+      <h3>3.2 Menu Nhóm chức năng / Section (Phân quyền theo chức danh)</h3>
+      <table style={{ width: '100%', borderCollapse: 'collapse', margin: '10px 0' }}>
+        <thead>
+          <tr style={{ backgroundColor: '#004d40', color: 'white' }}>
+            <th style={{ padding: '10px', textAlign: 'left', border: '1px solid #cbd5e1' }}>Chức năng</th>
+            <th style={{ padding: '10px', textAlign: 'left', border: '1px solid #cbd5e1' }}>Mục đích sử dụng chi tiết</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style={{ padding: '10px', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>Quản trị Chi nhánh (Branch Maint)</td>
+            <td style={{ padding: '10px', border: '1px solid #cbd5e1' }}>Xem thông tin các quỹ tiền của ĐGD, tra cứu nhật ký giao dịch, phê duyệt giao dịch theo hàng đợi của KSV, quản lý quỹ chính ấn chỉ, điều chỉnh/bàn giao quỹ tiền, xuất báo cáo cuối ngày...</td>
+          </tr>
+          <tr>
+            <td style={{ padding: '10px', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>Vấn tin và duy trì séc (Chk Status Maint)</td>
+            <td style={{ padding: '10px', border: '1px solid #cbd5e1' }}>Vấn tin dữ liệu, cập nhật trạng thái hoạt động, in lại séc dựa trên trạng thái đã phát hành chi tiết theo từng tài khoản của khách hàng.</td>
+          </tr>
+          <tr>
+            <td style={{ padding: '10px', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>Giao dịch Ngân quỹ</td>
+            <td style={{ padding: '10px', border: '1px solid #cbd5e1' }}>Thực hiện xuất/nhập tiền nội bộ ĐGD; điều chuyển tiền với NHNN, TCTD và các chi nhánh khác; tiếp quỹ/hoàn quỹ hệ thống ATM; xuất tiền mặt lô lớn, kiểm quỹ, giao dịch ấn chỉ của GDV.</td>
+          </tr>
+          <tr>
+            <td style={{ padding: '10px', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>Giao dịch với KH</td>
+            <td style={{ padding: '10px', border: '1px solid #cbd5e1' }}>Hỗ trợ tra cứu thông tin tập trung của khách hàng và hạch toán giao dịch: Nộp/rút tiền mặt tài khoản, tất toán sổ tiền gửi, giải ngân vốn, thu hồi nợ, chuyển khoản nội bộ BIDV...</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <br />
+      <h3>3.3 Menu Hỗ trợ / Options</h3>
+      <table style={{ width: '100%', borderCollapse: 'collapse', margin: '10px 0' }}>
+        <thead>
+          <tr style={{ backgroundColor: '#004d40', color: 'white' }}>
+            <th style={{ padding: '10px', textAlign: 'left', border: '1px solid #cbd5e1' }}>Chức năng</th>
+            <th style={{ padding: '10px', textAlign: 'left', border: '1px solid #cbd5e1' }}>Mục đích sử dụng</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style={{ padding: '10px', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>In số dư tài khoản (Balance Receipt)</td>
+            <td style={{ padding: '10px', border: '1px solid #cbd5e1' }}>In nhanh chứng nhận số dư khả dụng của tài khoản thanh toán (DDA) và tài khoản tiết kiệm không kỳ hạn (SAV).</td>
+          </tr>
+          <tr>
+            <td style={{ padding: '10px', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>Vấn tin sổ tiết kiệm (Passbook Inquiry)</td>
+            <td style={{ padding: '10px', border: '1px solid #cbd5e1' }}>Tra cứu thông tin dãy số seri ấn chỉ vật lý được gán định danh với tài khoản tiết kiệm không kỳ hạn (SAV) và tài khoản tiền gửi có kỳ hạn (CD).</td>
+          </tr>
+          <tr>
+            <td style={{ padding: '10px', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>Duy trì sổ tiết kiệm (Passbook Maint)</td>
+            <td style={{ padding: '10px', border: '1px solid #cbd5e1' }}>Thực hiện các tác nghiệp: Cập nhật thông tin, phát hành mới hoặc phát hành lại phôi sổ gán với tài khoản SAV và tài khoản CD.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <br />
+      <h3>3.4 Menu Tiện ích / Utilities</h3>
+      <ul>
+        <li><strong>Khóa ứng dụng (Lock Application):</strong> Khóa nhanh màn hình làm việc của TP Teller tạm thời để bảo mật dữ liệu khi GDV rời vị trí.</li>
+        <li><strong>Máy tính (Calculator):</strong> Tích hợp 03 cấu hình nhập liệu chuyên dụng:
+          <ul>
+            <li><em>Tiêu chuẩn (Standard):</em> Tính toán số học cơ bản.</li>
+            <li><em>Nhập theo số tiền (Denomination by Amount):</em> Nhập tổng số tiền tương ứng với từng mệnh giá khai báo để tự động tính tổng bảng kê tiền mặt.</li>
+            <li><em>Nhập theo số tờ (Denomination by Count):</em> Kiểm đếm bằng cách nhập tổng số tờ theo từng mệnh giá để hệ thống nhân quy đổi ra tổng giá trị trị bảng kê.</li>
+          </ul>
+        </li>
+        <li><strong>Máy tính quy đổi ngoại tệ (Exchange Cal):</strong> Hỗ trợ quy đổi dòng tiền giữa các loại tiền tệ dựa trên tỷ giá mua/bán realtime từ hệ thống.
+          <br />⚠️ <em>Lưu ý nghiệp vụ:</em> Nếu NSD chỉnh sửa tỷ giá vượt quá biên độ cho phép được cấu hình từ TSC, chương trình sẽ báo lỗi block giao dịch ngay lập tức.
+        </li>
+        <li><strong>Trạng thái host (Host Status):</strong> Kiểm tra trạng thái kết nối Online/Offline của máy trạm kết nối với Máy chủ Trung ương. Khi trạng thái Host bị mất kết nối (Offline), dòng chữ cảnh báo <code>offline</code> màu đỏ sẽ hiển thị cố định trên thanh Taskbar phía dưới màn hình.</li>
+      </ul>
+
+      <br />
+      <h3>3.5 Menu Trợ giúp / Help</h3>
+      <p>Hiển thị chi tiết thông tin mã số phiên bản (Version Release) hiện tại của chương trình TPTLR đang vận hành.</p>
+    </div>
+  </div>
+
+  {/* 4. KHỐI TỔ HỢP PHÍM TẮT TRUY CẬP NHANH */}
+  <div class="actual-screen-mockup">
+    <div class="sub-step-bar">
+      <div class="step-dot active">4</div>
+      <span style={{ fontWeight: 'bold', color: '#004d40' }}>4. Hệ thống phím tắt điều hướng nhanh (Hotkeys)</span>
+    </div>
+    
+    <div class="mockup-screen-content">
+      <div class="card-path-badge" style={{ marginBottom: '15px' }}>
+        <span class="path-icon">⌨️ Phím tắt Hệ thống</span> 
+        <strong>Tổ hợp điều hướng giao dịch nhanh thay thế chuột</strong>
+      </div>
+
+      <h3>4.1 Sử dụng tổ hợp phím tắt "CTRL / ALT + Chữ cái"</h3>
+      <ul>
+        <li><kbd>CTRL</kbd> + <kbd>Chữ cái</kbd>: Áp dụng để kích hoạt mở nhanh các phân hệ chính từ trang chủ:
+          <ul>
+            <li><kbd>Ctrl + B</kbd>: Mở nhanh mục Quản trị Chi nhánh (Branch Maint).</li>
+            <li><kbd>Ctrl + K</kbd>: Mở nhanh phân hệ Vấn tin và duy trì séc.</li>
+            <li><kbd>Ctrl + U</kbd>: Mở nhanh phân hệ Giao dịch Ngân quỹ.</li>
+            <li><kbd>Ctrl + T</kbd>: Mở nhanh phân hệ Giao dịch với Khách hàng.</li>
+          </ul>
+        </li>
+        <li><kbd>ALT</kbd> + <kbd>Chữ cái</kbd>: Áp dụng để thực thi lệnh nhanh cho các nút chức năng (Button) nằm bên trong nội dung màn hình giao dịch cụ thể.</li>
+      </ul>
+
+      <br />
+      <h3>4.2 Quy tắc di chuyển vùng nhập liệu bằng bàn phím</h3>
+      <ul>
+        <li>Sử dụng phím <kbd>Tab</kbd> hoặc lệnh Shift + Tab để di chuyển tuần tự giữa các trường thông tin dữ liệu (Input fields) và các nút lệnh trên form.</li>
+        <li><strong>Thao tác với danh sách lựa chọn (Dropdown List):</strong> Khi con trỏ chuột di chuyển đến trường Dropdown, nhấn phím <kbd>F4</kbd> trên bàn phím để hệ thống tự động bung danh sách (Sổ xuống). Sau đó sử dụng cụm phím <kbd>↑ Mũi tên lên</kbd> / <kbd>↓ Mũi tên xuống</kbd> để di chuyển chọn giá trị cần hạch toán.</li>
+        <li><strong>Đối với bàn phím có cụm phím số độc lập (Numpad):</strong> NSD có thể sử dụng phím dấu trừ <kbd>-</kbd> hoặc phím dấu cộng <kbd>+</kbd> tại cụm Numpad để nhảy nhanh giữa các ô nhập liệu thay thế cho phím Tab, tối ưu hóa tốc độ nhập liệu của Giao dịch viên.</li>
+      </ul>
+    </div>
   </div>
 
 </div>
