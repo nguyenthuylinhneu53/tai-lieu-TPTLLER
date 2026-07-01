@@ -1,0 +1,39 @@
+name: Release to Production
+
+# This workflow is triggered manually, and can be scheduled to occur automatically.
+
+on:
+  # If you want to run this workflow on a schedule, you can use the cron syntax below.
+  # schedule:
+  #   - cron: '0 20 * * 1-5'  # At 12:00 PM PST (8 PM UTC), Monday through Friday
+  #   - cron: '0 5 * * 2-6'  # At 9:00 PM PST (5 AM UTC next day), Monday through Friday
+  workflow_dispatch:
+
+concurrency:
+  group: production-${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  # This is the default workflow that uses the self-hosted runner. The self-hosted runner is slower than the GitHub-hosted large runner, but it does not incurr additional charges.
+  build:
+    name: Build Website
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: "main"
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - run: npm ci
+
+      - name: Compile
+        run: |
+          make versions-ci
+          make build
