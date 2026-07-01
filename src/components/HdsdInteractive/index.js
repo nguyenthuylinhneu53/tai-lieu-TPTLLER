@@ -3,11 +3,11 @@ import styles from './styles.module.css';
 
 const STORAGE_KEY = 'hdsd-tptlr-progress';
 const TABS = [
-  { key: 'steps', label: 'Thao tác' },
-  { key: 'rules', label: 'Quy tắc hệ thống' },
-  { key: 'errors', label: 'Lỗi thường gặp' },
-  { key: 'docs', label: 'Tài liệu' },
-  { key: 'video', label: 'Video' },
+  { key: 'steps', label: 'Thao tác', icon: '📝' },
+  { key: 'rules', label: 'Quy tắc hệ thống', icon: '📜' },
+  { key: 'errors', label: 'Lỗi thường gặp', icon: '⚠️' },
+  { key: 'docs', label: 'Tài liệu', icon: '📄' },
+  { key: 'video', label: 'Video', icon: '🎬' },
 ];
 
 export default function HdsdInteractive({ sections, appName, appSubName }) {
@@ -175,6 +175,7 @@ export default function HdsdInteractive({ sections, appName, appSubName }) {
                 tabIndex={0}
                 onKeyDown={(e) => e.key === 'Enter' && setActiveTab(t.key)}
               >
+                <span className={styles.tabIcon}>{t.icon}</span>
                 {t.label}
               </div>
             ))}
@@ -186,11 +187,10 @@ export default function HdsdInteractive({ sections, appName, appSubName }) {
                 <div className={styles.stepsList}>
                   {activeSection.steps.map((step, i) => {
                     const isObj = typeof step === 'object' && step !== null;
-                    const icon = isObj && step.icon ? step.icon : null;
                     const text = isObj ? step.text : step;
                     return (
                       <div className={styles.stepItem} key={i}>
-                        <span className={styles.stepIcon}>{icon || i + 1}</span>
+                        <span className={styles.stepBadge}>Bước {i + 1}</span>
                         <span className={styles.stepText}>{text}</span>
                       </div>
                     );
